@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { getSortedPostsData } from '../lib/posts';
 import homeStyles from '../styles/Home.module.css';
 
@@ -24,7 +25,10 @@ const Home = ({
         <ul className={homeStyles.list}>
           {allPostsData.map(({ id, title, date }) => (
             <li className={homeStyles.listItem} key={id}>
-              <a>{title}</a>
+              <Link href={`posts/${id}`}>
+                <h2>{title}</h2>
+              </Link>
+
               <br />
               <p>{date}</p>
             </li>
