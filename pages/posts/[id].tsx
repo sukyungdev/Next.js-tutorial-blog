@@ -1,14 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import { getAllPostIds, getPostData, getSortedPostsData } from '../../lib/posts';
+import PostStyles from '../../styles/Post.module.css';
 
 const Post = ({ postData }: { title: string; date: string; contentHtml: string }) => {
   return (
-    <div>
+    <div className={`${PostStyles.container}`}>
       <article>
         <h1>{postData.title}</h1>
-        <div>{postData.date}</div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <p>{postData.date}</p>
+        <p
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          className={`${PostStyles.text}`}
+        />
       </article>
     </div>
   );
